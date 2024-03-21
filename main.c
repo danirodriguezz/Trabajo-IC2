@@ -61,7 +61,8 @@ int testea_alumnos(int posicion)
     return ptr[posicion].dni;
 }
 
-int plazas_libres() {
+int plazas_libres()
+{
     int count;
     count = 0;
     for (int i = 0; i < MAX; i++)
@@ -74,7 +75,8 @@ int plazas_libres() {
     return count;
 }
 
-int plazas_ocupadas() {
+int plazas_ocupadas()
+{
     int count;
     count = 0;
     for (int i = 0; i < MAX; i++)
@@ -87,8 +89,8 @@ int plazas_ocupadas() {
     return count;
 }
 
-
-void test_matricula(int dni) {
+void test_matricula(int dni)
+{
     for (int i = 0; i < MAX; i++)
     {
         int dni1;
@@ -97,25 +99,59 @@ void test_matricula(int dni) {
         if (resultado == -2)
         {
             printf("El alumno ya esta matriculado\n");
-        } else if (resultado == -2) {
+        }
+        else if (resultado == -2)
+        {
             printf("No hay plazas disponibles\n");
-        } else {
+        }
+        else
+        {
             printf("El alumno con DNI %d ha sido matriculado en la posicion %d\n", dni1, resultado);
         }
     }
 }
 
-void test_desmatricula() {
-    
+void test_desmatricula(int dni)
+{
+    for (int i = 0; i < MAX; i++)
+    {
+        int dni1;
+        dni1 = dni + i;
+        int resultado = desmatricular_alumno(dni1);
+        if (resultado == -1)
+        {
+            printf("El alumno no existe\n");
+        }
+        printf("El alumno con DNI %d ha sido desmatriculado de la posicion %d\n", dni1, resultado);
+    }
+}
+
+void matricula_multiple(int npersonas, int dnis[])
+{
+    int plazas = plazas_libres();
+    if (plazas < npersonas)
+    {
+        printf("No hay suficientes plazas libres");
+        return;
+    }
+
+    // Matricular a cada persona de la lista
+    for (int i = 0; i < npersonas; i++)
+    {
+        matricular_alumno(dnis[i]);
+    }
+    printf("Se han matriculado todos los alumnos");
 }
 
 int main()
 {
     // Crear el vector de estructuras
+    int dnis[2] = {1234567, 1324567};
     struct Persona clase[MAX];
     ptr = clase;
     inicializa_grupo();
     test_matricula(79072763);
-    desmatricular_alumno(79072763);
+    test_desmatricula(79072763);
+    matricula_multiple(2, dnis);
     return 0;
 }
