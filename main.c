@@ -14,5 +14,6 @@ int main() {
     struct Persona vector[50];
     // Liberar la memoria asignada para el vector
     free(vector);
+    // Actualizacion
     return 0;
 }
