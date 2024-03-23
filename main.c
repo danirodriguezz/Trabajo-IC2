@@ -37,6 +37,7 @@ int matricular_alumno(int dni)
             return i;
         }
     }
+    return -1;
 }
 
 int desmatricular_alumno(int dni)
@@ -100,7 +101,7 @@ void test_matricula(int dni)
         {
             printf("El alumno ya esta matriculado\n");
         }
-        else if (resultado == -2)
+        else if (resultado == -1)
         {
             printf("No hay plazas disponibles\n");
         }
