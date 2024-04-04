@@ -217,7 +217,8 @@ void test_matricula(int dni)
         }
         else
         {
-            printf("El alumno con DNI %d ha sido matriculado en la posicion %d\n", dni1, resultado);
+            printf("El alumno con DNI %d ha sido matriculado en la posicion %d\n", 
+                   dni1, resultado);
         }
     }
     // Comprobando que el alumno ya esta matriculado
