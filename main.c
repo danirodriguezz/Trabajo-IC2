@@ -10,17 +10,18 @@ struct Persona
     int numero_matricula;
 } *ptr;
 
-void inicializa_grupo()
+int inicializa_grupo()
 {
     for (int i = 0; i < MAX; i++)
     {
         ptr[i].dni = -1;
     }
+    return 0;
 };
 
 int matricular_alumno(int dni)
 {
-    // Comprobar si el ealumno ya esta matriculado
+    // Comprobar si el alumno ya esta matriculado
     for (int i = 0; i < MAX; i++)
     {
         if (ptr[i].dni == dni)
@@ -28,7 +29,7 @@ int matricular_alumno(int dni)
             return -2;
         }
     }
-
+    // Matriculando al alumno
     for (int i = 0; i < MAX; i++)
     {
         if (ptr[i].dni == -1)
@@ -42,6 +43,7 @@ int matricular_alumno(int dni)
 
 int desmatricular_alumno(int dni)
 {
+    // Buscando al alumno e iterando para desmatricularlo
     for (int i = 0; i < MAX; i++)
     {
         if (ptr[i].dni == dni)
@@ -92,7 +94,7 @@ int plazas_ocupadas()
 
 void test_matricula(int dni)
 {
-    for (int i = 0; i < MAX; i++)
+    for (int i = 0; i < MAX + 2; i++)
     {
         int dni1;
         dni1 = dni + i;
@@ -110,11 +112,34 @@ void test_matricula(int dni)
             printf("El alumno con DNI %d ha sido matriculado en la posicion %d\n", dni1, resultado);
         }
     }
+    // Comprobando que el alumno ya esta matriculado
+    for (int i = 0; i < 5; i++)
+    {
+        int dni1;
+        dni1 = dni + i;
+        int resultado = matricular_alumno(dni1);
+        if (resultado == -2)
+        {
+            printf("El alumno ya esta matriculado\n");
+        }
+    }
 }
 
 void test_desmatricula(int dni)
 {
-    for (int i = 0; i < MAX; i++)
+    for (int i = 0; i < MAX - 10; i++)
+    {
+        int dni1;
+        dni1 = dni + i;
+        int resultado = desmatricular_alumno(dni1);
+        if (resultado == -1)
+        {
+            printf("El alumno no existe\n");
+        } else {
+            printf("El alumno con DNI %d ha sido desmatriculado de la posicion %d\n", dni1, resultado);
+        }
+    }
+    for (int i = 0; i < 3; i++)
     {
         int dni1;
         dni1 = dni + i;
@@ -123,7 +148,6 @@ void test_desmatricula(int dni)
         {
             printf("El alumno no existe\n");
         }
-        printf("El alumno con DNI %d ha sido desmatriculado de la posicion %d\n", dni1, resultado);
     }
 }
 
@@ -141,7 +165,7 @@ void matricula_multiple(int npersonas, int dnis[])
     {
         matricular_alumno(dnis[i]);
     }
-    printf("Se han matriculado todos los alumnos");
+    printf("Se han matriculado todos los alumnos \n");
 }
 
 int main()
@@ -154,5 +178,12 @@ int main()
     test_matricula(79072763);
     test_desmatricula(79072763);
     matricula_multiple(2, dnis);
+    int resultado = plazas_libres();
+    printf("Hay %d plazas libres\n", resultado);
+    int resultado2 = plazas_ocupadas();
+    printf("Hay %d plazas ocupadas\n", resultado2);
+    printf("El alumno en la posición %d, tiene el dni = %d\n", 1, testea_alumnos(1));
+    printf("El alumno en la posición %d, tiene el dni = %d\n", 5, testea_alumnos(5));
+    printf("El alumno en la posición %d, tiene el dni = %d\n", 48, testea_alumnos(48));
     return 0;
 }

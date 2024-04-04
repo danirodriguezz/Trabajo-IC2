@@ -1,6 +1,6 @@
 ---
 title: "Trabajo de IC2"
-author: "Daniel Rodríguez Alonso, Sofia, Jaime"
+author: "Daniel Rodríguez Alonso, Sofia Travieso García, Jaime Rivero Santana"
 date: "`r format(Sys.Date(), '%d %B %Y')`"
 output: 
   pdf_document: 
@@ -41,10 +41,10 @@ struct Persona
 } *ptr;
 ```
 
-En la definicion de esta struct le definimos un dni, nombre, apellido, numero_matricula. Y al final de la definicon de ese struct
+En la definicion de esta struct le definimos un dni, nombre, apellido, numero_matricula. Y al final de la definición de ese struct
 declaramos un puntero global que va a tener acceso todo el programa y que solo va a poder apuntar a un struct de ese tipo.
 
-Luego en el main declaramos en vector de grupo con maximo 50 alumnos.
+Luego en el main declaramos en vector de grupo con máximo 50 alumnos.
 
 ```{c, eval=FALSE}
 #define MAX 50
@@ -59,11 +59,11 @@ int main()
 
 Para definir el tamaño del vector utilizamos una constante que estara definida igualmente para todo el programa
 pero que no podrá cambiar de valor. En esta parte del desarrollo tambien le decimos al puntero $ptr$ que va a apuntar
-a la primera posicion del vector clase.
+a la primera posición del vector clase.
 
 \newpage
 
-Este codigo se puede representar graficamente a traves de PythonTutor.
+Este codigo se puede representar gráficamente a traves de PythonTutor.
 
 
 ![PythonTutor](imagenes/Captura desde 2024-03-23 10-00-05.png){width=100%}
@@ -77,12 +77,13 @@ Ahora pasamos al desarrollo de las funciones
 La primera funcion que desarrollamos es la de inicializa_grupo:
 
 ```{c, eval=FALSE}
-void inicializa_grupo()
+int inicializa_grupo()
 {
     for (int i = 0; i < MAX; i++)
     {
         ptr[i].dni = -1;
     }
+    return 0;
 };
 ```
 
@@ -93,7 +94,7 @@ Esta funcion se utilizara nada mas ejecutar el prgrama para poder poner en todas
 ```{c, eval=FALSE}
 int matricular_alumno(int dni)
 {
-    // Comprobar si el ealumno ya esta matriculado
+    // Comprobar si el alumno ya esta matriculado
     for (int i = 0; i < MAX; i++)
     {
         if (ptr[i].dni == dni)
@@ -101,7 +102,7 @@ int matricular_alumno(int dni)
             return -2;
         }
     }
-
+    // Matriculando al alumno
     for (int i = 0; i < MAX; i++)
     {
         if (ptr[i].dni == -1)
@@ -114,13 +115,14 @@ int matricular_alumno(int dni)
 }
 ```
 
-Esta función servirá para poder asignarle una plaza a un alumno, en donde comprueba primero que no esta matriculado, que en caso de ser asi devolverá un -2, si el alumno no estaba matriculado buscará una posición donde el valor dni = -1 lo que significa que esa posición esta libre y pondrá el valor del dni que se quiere matricular en esa posicion, devolviendo la posición del dni guardado. En caso de que el vector se encuentre lleno y no se matriculará el alumno y la función devolverá un -1.
+Esta función servirá para poder asignarle una plaza a un alumno, en donde comprueba primero que no esta matriculado, que en caso de ser asi devolverá un -2, si el alumno no estaba matriculado buscará una posición donde el valor dni = -1 lo que significa que esa posición esta libre y pondrá el valor del dni que se quiere matricular en esa posición, devolviendo la posición del dni guardado. En caso de que el vector se encuentre lleno y no se matriculará el alumno y la función devolverá un -1.
 
 ## desmatricula_alumno
 
 ```{c, eval=FALSE}
 int desmatricular_alumno(int dni)
 {
+    // Buscando al alumno e iterando para desmatricularlo
     for (int i = 0; i < MAX; i++)
     {
         if (ptr[i].dni == dni)
@@ -133,7 +135,7 @@ int desmatricular_alumno(int dni)
 }
 ```
 
-Al contrario de la funcion de matricular_alumno, esta función resive por parámetro un dni que buscara usando el puntero que apunta al vector de clase y cuando los encuentre pone el valor de dni de esa posicion a -1 lo que significa que queda libre esa posición
+Al contrario de la funcion de matricular_alumno, esta función resive por parámetro un dni que buscara usando el puntero que apunta al vector de clase y cuando los encuentre pone el valor de dni de esa posición a -1 lo que significa que queda libre esa posición
 
 ## testea_alumnos
 
@@ -148,7 +150,7 @@ int testea_alumnos(int posicion)
 }
 ```
 
-Esta función testea la posición de un alumno, esa posición se pasa por parametro que en caso de que esa posicion sea menor que 0 o mayor que el tamaño del vector devolvera un -2 ya que se esta intentando acceder a una posicion que no esta disponible, en caso que no se cumpla lo anterior la función devolverá el dni de la persona que este matriculada en esa posición o un -1 si esa posición esta libre.
+Esta función testea la posición de un alumno, esa posición se pasa por parametro que en caso de que esa posicion sea menor que 0 o mayor que el tamaño del vector devolvera un -2 ya que se esta intentando acceder a una posición que no esta disponible, en caso que no se cumpla lo anterior la función devolverá el dni de la persona que este matriculada en esa posición o un -1 si esa posición esta libre.
 
 ## plazas_libres
 
@@ -168,7 +170,7 @@ int plazas_libres()
 }
 ```
 
-Esta función no resive ningun argumento por parametro, lo unico que hace es denifinir un contador y recorrer el vector de clase y va incrementando el contador cada vez que encuentre una posicion con el dni a -1.
+Esta función no resive ningun argumento por parametro, lo unico que hace es denifinir un contador y recorrer el vector de clase y va incrementando el contador cada vez que encuentre una posición con el dni a -1.
 
 ## plazas_ocupadas
 
@@ -188,7 +190,7 @@ int plazas_ocupadas()
 }
 ```
 
-Esta funcion tiene la misma lógica que la función de plazas_libres lo unico que en cada iteración va comprobando si el dni es distinto a -1 lo que significará que la plaza esta ocupada y incrementaŕa el contador, cuando termine de iterar devuleve el contador.
+Esta funcion tiene la misma lógica que la función de plazas_libres lo unico que en cada iteración va comprobando si el dni es distinto a -1 lo que significará que la plaza esta ocupada y incrementará el contador, cuando termine de iterar devuleve el contador.
 
 
 # Programa de prueba
@@ -200,7 +202,7 @@ En esta seccion del desarrollo crearemos funciones especificas para poder poner 
 ```{c, eval=FALSE}
 void test_matricula(int dni)
 {
-    for (int i = 0; i < MAX; i++)
+    for (int i = 0; i < MAX + 2; i++)
     {
         int dni1;
         dni1 = dni + i;
@@ -215,21 +217,44 @@ void test_matricula(int dni)
         }
         else
         {
-            printf("El alumno con DNI %d ha sido matriculado en la posicion %d\n", 
-                   dni1, resultado);
+            printf("El alumno con DNI %d ha sido matriculado en la posicion %d\n", dni1, resultado);
+        }
+    }
+    // Comprobando que el alumno ya esta matriculado
+    for (int i = 0; i < 5; i++)
+    {
+        int dni1;
+        dni1 = dni + i;
+        int resultado = matricular_alumno(dni1);
+        if (resultado == -2)
+        {
+            printf("El alumno ya esta matriculado\n");
         }
     }
 }
 ```
 
-El uso de esta funcion es para poder testear la funcion de matricula_alumno en donde realizamos una iteracion matriculando diversos dnis y dependiendo del resultado imprimimos por pantalla diferentes mensajes.
+El uso de esta función es para poder testear la función de matricula_alumno en donde realizamos una iteracion matriculando diversos dnis y dependiendo del resultado imprimimos por pantalla diferentes mensajes.
 
 ## dematricula
 
 ```{c, eval=FALSE}
 void test_desmatricula(int dni)
 {
-    for (int i = 0; i < MAX; i++)
+    for (int i = 0; i < MAX - 10; i++)
+    {
+        int dni1;
+        dni1 = dni + i;
+        int resultado = desmatricular_alumno(dni1);
+        if (resultado == -1)
+        {
+            printf("El alumno no existe\n");
+        } else {
+            printf("El alumno con DNI %d ha sido desmatriculado de la posicion %d\n", 
+                   dni1, resultado);
+        }
+    }
+    for (int i = 0; i < 3; i++)
     {
         int dni1;
         dni1 = dni + i;
@@ -238,13 +263,11 @@ void test_desmatricula(int dni)
         {
             printf("El alumno no existe\n");
         }
-        printf("El alumno con DNI %d ha sido desmatriculado de la posicion %d\n", 
-               dni1, resultado);
     }
 }
 ```
 
-Esta funcion testea la funcion de desmatricula_alumno llamandola un numero MAX de veces y pansandole un dni diferente en cada iteración. Cuando se llama la funcion test dependiendo del resultado imprime un mensaje u otro
+Esta función testea la función de desmatricula_alumno llamándola un número MAX de veces y pansandole un dni diferente en cada iteración. Cuando se llama la función test dependiendo del resultado imprime un mensaje u otro
 
 ## matricula_multiple
 
@@ -263,11 +286,11 @@ void matricula_multiple(int npersonas, int dnis[])
     {
         matricular_alumno(dnis[i]);
     }
-    printf("Se han matriculado todos los alumnos");
+    printf("Se han matriculado todos los alumnos \n");
 }
 ```
 
-matricula multiple es una funcion que trata de matricular a un conjunto de alumnos que se pasa por parametro y que solo los matriculara en caso de que hubiese le mismos de espacios libres que de alumnos que se quieren matricular en caso contrario no se matriculará a ninguno.
+matricula multiple es una función que trata de matricular a un conjunto de alumnos que se pasa por parametro y que solo los matriculara en caso de que hubiese le mismos de espacios libres que de alumnos que se quieren matricular en caso contrario no se matriculará a ninguno.
 
 # Main
 
@@ -284,10 +307,90 @@ int main()
     test_matricula(79072763);
     test_desmatricula(79072763);
     matricula_multiple(2, dnis);
+    int resultado = plazas_libres();
+    printf("Hay %d plazas libres\n", resultado);
+    int resultado2 = plazas_ocupadas();
+    printf("Hay %d plazas ocupadas\n", resultado2);
+    printf("El alumno en la posición %d, tiene el dni = %d\n", 1, testea_alumnos(1));
+    printf("El alumno en la posición %d, tiene el dni = %d\n", 5, testea_alumnos(5));
+    printf("El alumno en la posición %d, tiene el dni = %d\n", 48, testea_alumnos(48));
     return 0;
 }
 ```
 
+# Compilaciones y pruebas
+
+En la compilacion del código ejecutamos los siguientes comandos
+
+```{bash, eval=FALSE}
+gcc main.c -o programa
+```
+
+Y ejecutamos el programa 
+
+```{bash, eval=FALSE}
+./programa
+```
+
+y visualizamos el resultado
+
+![Terminal](imagenes/Captura desde 2024-04-02 11-07-45.png){width=90%}
+
+Vemos que al probar las funciones de testea martricula y testea desmatricula funciona perfectamente y rellena el vector clase y luego los desmatricula entero. 
+
+Ahora vamos a intentar compilar el trabajo itentando matricular mas de 50 alumnos y y no desmatriculandolos todos para ver si funciona el codigo y las funciones de plazas libres y plazas ocupadas.
+
+![Error](imagenes/Captura desde 2024-04-04 09-46-13.png){width=100%}
+
+Al intentar compilar este programa vemos que nos salta un error que es bastante secillo de solucionar, se trata de que en el apartado de main() de nuestro trabajo duplicamos la variable de resultado 2 veces, cambiando el nombre a esta variable solucionamos el problema y podremso compilar el programa.
+
+
+![Terminal](imagenes/Captura desde 2024-04-04 09-54-13.png){width=100%}
+
+En esta compilación el programa funciona pero nos aparece que hay el mismo numero de plazas ocupadas que de plazas libres, y nos dimos cuenta del problema que se encontraba en el main():
+
+```{c, eval=FALSE}
+int main()
+{
+    // Crear el vector de estructuras
+    int dnis[2] = {1234567, 1324567};
+    struct Persona clase[MAX];
+    ptr = clase;
+    inicializa_grupo();
+    test_matricula(79072763);
+    test_desmatricula(79072763);
+    matricula_multiple(2, dnis);
+    int resultado = plazas_libres();
+    printf("Hay %d plazas libres\n", resultado);
+    int resultado2 = plazas_ocupadas();
+    printf("Hay %d plazas ocupadas\n", resultado);
+    return 0;
+}
+```
+
+El problema se ecuentra en que en el segundo printf imprimimos la misma variable por eso el resultado es dos veces el mismo, cambiando eso se solucionaría el problema.
+
+Volvemos a compilar el programa y vemos como esta vez el resultado si es correcto donde se matriculan 52 alumnos y cuando llega a su límite te salta el mensaje de "No hay plazas disponibles" y consecutivamente se desmatriculan 40 alumnos, cuando termina esos procesos se matriculan dos alumnos con la funcion de matricula_multiple() y salta el mensaje de "Se han matriculado todos los alumnos", por ultimo santa los mensajes de "Hay 38 plazas libres" y "Hay 12 plazas ocupadas"
+teniendo todo el sentido ya que 38 + 12 = 50 el número de alumnos máximo por clase.
+
+
+![Terminal](imagenes/Captura desde 2024-04-04 10-07-36.png){width=100%}
+
+La última compilación vamos a probar la funcion de testea_alumno en el que le pasas una posicion y te devuelve el dni de la persona en esa posición.
+
+\newpage
+
+![Terminal](imagenes/Captura desde 2024-04-04 10-32-57.png){width=50%}
+
+Como vemos el resultado tiene sentido y la función muestra el dni de la posición pasada por parámtero.
+
+
+
+# Conclusión
+
+El desarrollo de este trabajo nos ha dado la oportunidad de profundizar en diversos aspectos del lenguaje de C. En el que hemos visto elementos esenciales como punteros, vectores, struct y funciones, siendo concientes de la posibilidad de mejora de este trabajo dejamos por escrito las ganas que tenemos de mejorar y aladir mejores funcionalidades como memoria dinámica para siguientes entregas adjuntamos un link de [GitHub] donde esta el repositorio del trabajo con todas las versiones.
+
+[GitHub]: https://github.com/danirodriguezz/Trabajo-IC2
 
 
 
