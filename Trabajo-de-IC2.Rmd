@@ -496,10 +496,41 @@ int main()
 
 Como vemos el resultado tiene sentido y la función muestra el dni de la posición pasada por parámtero.
 
+\newpage
 
 # División en módulos
 
+En el apartado de division de módulos se ha intentado y dejamos los intentos a continuación:
 
+```{bash, eval=FALSE}
+gcc -c alumnos.c
+```
+
+![Terminal](imagenes/Captura desde 2024-04-05 16-42-59.png){width=100%}
+
+```{bash, eval=FALSE}
+gcc -c main.c
+```
+
+Este comando se ejecuta sinningún error
+
+```{bash, eval=FALSE}
+gcc -o main main.o alumnos.o
+```
+
+Esta comando tampoco da ningun error al ejecutarse
+
+- Ejecutamos el programa
+
+```{bash, eval=FALSE}
+./main
+```
+
+Al intentar ejecutar el programa nos salta el siguiente error.
+
+![Terminal](imagenes/Captura desde 2024-04-05 16-50-18.png){width=100%}
+
+\newpage
 
 # Memoria dinámica
 

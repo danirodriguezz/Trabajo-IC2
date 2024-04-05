@@ -1,9 +1,5 @@
-#include <stdio.h>
 #include "alumnos.h"
 
-/*
-
-// Definición de la estructura
 struct Persona
 {
     int dni;
@@ -168,43 +164,4 @@ void matricula_multiple(int npersonas, int dnis[])
         matricular_alumno(dnis[i]);
     }
     printf("Se han matriculado todos los alumnos \n");
-}
-
-int main()
-{
-    // Crear el vector de estructuras
-    int dnis[2] = {1234567, 1324567};
-    struct Persona clase[MAX];
-    ptr = clase;
-    inicializa_grupo();
-    test_matricula(79072763);
-    test_desmatricula(79072763);
-    matricula_multiple(2, dnis);
-    int resultado = plazas_libres();
-    printf("Hay %d plazas libres\n", resultado);
-    int resultado2 = plazas_ocupadas();
-    printf("Hay %d plazas ocupadas\n", resultado2);
-    printf("El alumno en la posición %d, tiene el dni = %d\n", 1, testea_alumnos(1));
-    printf("El alumno en la posición %d, tiene el dni = %d\n", 5, testea_alumnos(5));
-    printf("El alumno en la posición %d, tiene el dni = %d\n", 48, testea_alumnos(48));
-    return 0;
-}
-
-*/
-
-int main() {
-    // Crear el vector de estructuras
-    int dnis[2] = {1234567, 1324567};
-    inicializa_grupo();
-    test_matricula(79072763);
-    test_desmatricula(79072763);
-    matricula_multiple(2, dnis);
-    int resultado = plazas_libres();
-    printf("Hay %d plazas libres\n", resultado);
-    int resultado2 = plazas_ocupadas();
-    printf("Hay %d plazas ocupadas\n", resultado2);
-    printf("El alumno en la posición %d, tiene el dni = %d\n", 1, testea_alumnos(1));
-    printf("El alumno en la posición %d, tiene el dni = %d\n", 5, testea_alumnos(5));
-    printf("El alumno en la posición %d, tiene el dni = %d\n", 48, testea_alumnos(48));
-    return 0;
 }
