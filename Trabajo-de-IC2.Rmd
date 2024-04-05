@@ -506,6 +506,7 @@ En el apartado de division de módulos se ha intentado y dejamos los intentos a 
 gcc -c alumnos.c
 ```
 
+![Terminal](imagenes/Captura desde 2024-04-05 16-42-59.png){width=100%}
 
 ```{bash, eval=FALSE}
 gcc -c main.c
@@ -527,8 +528,7 @@ Esta comando tampoco da ningun error al ejecutarse
 
 Al intentar ejecutar el programa nos salta el siguiente error.
 
-
-
+![Terminal](imagenes/Captura desde 2024-04-05 16-50-18.png){width=100%}
 
 \newpage
 
