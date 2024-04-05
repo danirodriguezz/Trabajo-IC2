@@ -534,6 +534,32 @@ Al intentar ejecutar el programa nos salta el siguiente error.
 
 # Memoria dinámica
 
+En este apartado intentamos la memoria dinámica y el codigo quedaría de la siguiente manera
+
+Declaramos el puntero con memoria dinámica
+
+```{c, eval=FALSE}
+// Asignación de memoria dinámica
+ptr = (struct Persona *)malloc(MAX * sizeof(struct Persona));
+```
+
+El resto de las funciones quedarían igual y el resultado tras compilar y ejecutar el codigo sería correcto.
+
+- Compilamos
+
+```{bash, eval=FALSE}
+gcc main.c -o programa
+```
+
+- Ejecutamos el programa 
+
+```{bash, eval=FALSE}
+./programa
+```
+
+![Terminal](imagenes/Captura desde 2024-04-05 20-16-37.png){width=50%}
+
+
 
 \newpage
 
