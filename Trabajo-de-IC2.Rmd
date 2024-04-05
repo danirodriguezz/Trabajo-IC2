@@ -26,24 +26,24 @@ Esta práctica se presenta como un desafío integral, donde los participantes te
 
 El desarrollo del trabajo se divide de la siguiente forma entre los integrantes del grupo:
 
-- **Daniel Rodriguez Aonso**
+- **Daniel Rodríguez Alonso**
 
-    Se encargo del desarrollo de las funciones de test tanto de la testea_matricula como testea_desmatricula y matricula multiple, definción del struct, tambien compiló y ejecutó el programa cierto número de veces.
+    Se encargó del desarrollo de las funciones de test: "testea_matricula", "testea_desmatricula" y "matricula multiple". También de la definción del struct y compiló y ejecutó el programa cierto número de veces.
 
-- **Sofia Travieso García**
+- **Sofía Travieso García**
 
-    Se encargó del desarrollo del las funciones de matricula alumno y desmatricula alumno como la de testea asiento, también compiló y explicó las funcionalidades de las funciones en el PDF y desarrolló su maquetación.
+    Se encargó del desarrollo de las funciones: "matricula alumno", "desmatricula alumno" y "testea_alumno". Además, compiló y explicó las funcionalidades de las funciones en el PDF y desarrolló su maquetación.
     
 - **Jaime Rivero Santana**
 
-    Participó en el desarrollo de las funciones de inicializa grupo, plazas_libres, plazas_ocupadas. Se encargo de cierta parte de la maquetación del trabajo, y compiló el programa ciertas veces para ver su funcionamiento.
+    Participó en el desarrollo de las funciones: "inicializa grupo", "plazas_libres" y "plazas_ocupadas". Se encargó de cierta parte de la maquetación del trabajo, y compiló el programa ciertas veces para ver su funcionamiento.
     
     
 El desarrollo de la práctica se dividirá en las siguientes actividades:
 
 # Declaración del vector grupo
 
-Para la delcaración del vector grupo que tiene que ser de MAX 50 persona hemos creado directamente el vector utilizando el struct de Persona
+Para la delcaración del vector "grupo", que tiene que ser de MAX 50 personas, hemos creado directamente el vector utilizando el struct de Persona.
 
 ```{c, eval=FALSE}
 // Definición de la estructura
@@ -56,9 +56,9 @@ struct Persona
 } *ptr;
 ```
 
-En la definicion de este struct declaramos un dni, nombre, apellido y numero de matricula. Además, al final, definiremos un puntero global que va a tener acceso a todo el programa y que solo va a poder apuntar a un struct de ese tipo.
+En la definición de este struct, declaramos: dni, nombre, apellido y número de matricula. Además, al final, definiremos un puntero global que va a tener acceso a todo el programa y que sólo va a poder apuntar a un struct de ese tipo.
 
-Luego en el main declaramos en vector de grupo con máximo 50 alumnos.
+Luego, en el main, declaramos un vector de grupo con máximo 50 alumnos.
 
 ```{c, eval=FALSE}
 #define MAX 50
@@ -74,12 +74,12 @@ int main()
 Para definir el tamaño del vector utilizamos una constante que estará definida igualmente para todo el programa, por lo tanto, no podrá cambiar de valor. En esta parte del desarrollo, también le indicaremos al puntero “ptr” que apunte a la primera posición del vector clase.
 
 
-Este código se puede representar gráficamente a través de PythonTutor.
+Este código se puede representar gráficamente a través de PythonTutor:
 
 
 ![PythonTutor](imagenes/Captura desde 2024-03-23 10-00-05.png){width=100%}
 
-Ahora pasamos al desarrollo de las funciones
+Ahora pasamos al desarrollo de las funciones.
 
 # Funciones
 
@@ -358,7 +358,7 @@ Ahora vamos a intentar compilar el programa matriculando más de 50 alumnos y  n
 
 ![Error](imagenes/Captura desde 2024-04-04 09-46-13.png){width=100%}
 
-Al intentar compilar este programa vemos que nos salta un error que es bastante sencillo de solucionar. Se trata de que en el apartado de main() de nuestro trabajo, duplicamos la variable de resultado 2 veces. Cambiando el nombre a esta variable solucionamos el problema y podremos compilar el programa.
+Al intentar compilar este programa vemos que nos salta un error que es bastante sencillo de solucionar. Se trata de que, en el apartado de main() de nuestro trabajo, duplicamos la variable de resultado 2 veces. Cambiando el nombre a esta variable solucionamos el problema y podremos compilar el programa.
 
 \newpage
 
@@ -410,7 +410,7 @@ int main()
 
 ![Terminal](imagenes/Captura desde 2024-04-04 09-54-13.png){width=100%}
 
-En esta compilación el programa funciona pero nos aparece que hay el mismo numero de plazas ocupadas que de plazas libres, y nos dimos cuenta del problema que se encontraba en el main():
+En esta compilación, el programa funciona pero nos aparece que hay el mismo número de plazas ocupadas que de plazas libres. Nos dimos cuenta del problema que se encontraba en el main():
 
 - **Antes**
 
@@ -494,13 +494,13 @@ int main()
 
 ![Terminal](imagenes/Captura desde 2024-04-04 10-32-57.png){width=50%}
 
-Como vemos el resultado tiene sentido y la función muestra el dni de la posición pasada por parámtero.
+Como vemos, el resultado tiene sentido y la función muestra el dni de la posición pasada por parámtero.
 
 \newpage
 
 # División en módulos
 
-En el apartado de division de módulos se ha intentado y dejamos los intentos a continuación:
+El apartado de división de módulos se ha intentado y dejamos los intentos a continuación:
 
 ```{bash, eval=FALSE}
 gcc -c alumnos.c
@@ -512,13 +512,13 @@ gcc -c alumnos.c
 gcc -c main.c
 ```
 
-Este comando se ejecuta sinningún error
+Este comando se ejecuta sin ningún error.
 
 ```{bash, eval=FALSE}
 gcc -o main main.o alumnos.o
 ```
 
-Esta comando tampoco da ningun error al ejecutarse
+Este comando tampoco da ningún error al ejecutarse.
 
 - Ejecutamos el programa
 
@@ -526,7 +526,7 @@ Esta comando tampoco da ningun error al ejecutarse
 ./main
 ```
 
-Al intentar ejecutar el programa nos salta el siguiente error.
+Al intentar ejecutar el programa nos salta el siguiente error:
 
 ![Terminal](imagenes/Captura desde 2024-04-05 16-50-18.png){width=100%}
 
@@ -534,16 +534,16 @@ Al intentar ejecutar el programa nos salta el siguiente error.
 
 # Memoria dinámica
 
-En este apartado intentamos la memoria dinámica y el codigo quedaría de la siguiente manera
+En este apartado intentamos la memoria dinámica. El código quedaría de la siguiente manera:
 
-Declaramos el puntero con memoria dinámica
+Declaramos el puntero con memoria dinámica.
 
 ```{c, eval=FALSE}
 // Asignación de memoria dinámica
 ptr = (struct Persona *)malloc(MAX * sizeof(struct Persona));
 ```
 
-El resto de las funciones quedarían igual y el resultado tras compilar y ejecutar el codigo sería correcto.
+El resto de las funciones quedarían igual y el resultado tras compilar y ejecutar el código sería correcto.
 
 - Compilamos
 
