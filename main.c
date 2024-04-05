@@ -1,5 +1,6 @@
-/*
+// Ejercicio sin memoria dinámica
 
+/*
 #include <stdio.h>
 #define MAX 50
 
