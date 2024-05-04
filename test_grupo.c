@@ -1,3 +1,7 @@
+#include <test_grupo.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 // Definición de la estructura
 struct Persona
 {
