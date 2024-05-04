@@ -839,3 +839,12 @@ Ahora ejecutaremos el comando `make` para poder compilar el porgrama y ejecutare
 
 
 
+![Terminal](imagenes/Captura desde 2024-05-05 00-09-50.png){width=100%}
+
+
+
+- Ejecutamos el ejecutable y funciona correctamente
+
+
+![Terminal](imagenes/Captura desde 2024-05-05 00-12-08.png){width=43%}
+
