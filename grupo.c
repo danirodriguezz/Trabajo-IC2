@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h> // Para las funciones malloc y free
-#include <test_grupo.h>
+#include <test.h>
 
 int main()
 {
