@@ -1,10 +1,6 @@
-
 #include <stdio.h>
 #include <stdlib.h> // Para las funciones malloc y free
-
-#define MAX 50
-
-
+#include <test_grupo.h>
 
 int main()
 {
