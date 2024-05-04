@@ -15,7 +15,8 @@ struct Persona *ptr;
 
 int inicializa_grupo()
 {
-    ptr = (struct Persona *)malloc(MAX * sizeof(struct Persona)); // Asignación de memoria dinámica
+    // Asignación de memoria dinámica
+    ptr = (struct Persona *)malloc(MAX * sizeof(struct Persona)); 
     if (ptr == NULL)
     {
         printf("Error: No se pudo asignar memoria\n");
